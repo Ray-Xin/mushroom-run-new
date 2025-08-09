@@ -18,9 +18,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite.setVelocity(-100, 0)
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, location) {
-    tiles.setTileAt(location, assets.tile`transparency16`)
-})
 controller.right.onEvent(ControllerButtonEvent.Released, function () {
     mySprite.setVelocity(0, 0)
 })
@@ -29,6 +26,9 @@ controller.left.onEvent(ControllerButtonEvent.Released, function () {
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite.setVelocity(100, 0)
+})
+scene.onOverlapTile(SpriteKind.Player, img`myTile3`, function (sprite, location) {
+    tiles.setTileAt(location, assets.tile`transparency16`)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     sprites.destroy(otherSprite)
@@ -598,7 +598,7 @@ scene.cameraFollowSprite(mySprite)
 tiles.setCurrentTilemap(tilemap`Supergood`)
 mySprite.setPosition(32, 16 * 36)
 mySprite.sayText("Let's Go!", 2000, true)
-for (let value of tiles.getTilesByType(assets.tile`myTile3`)) {
+for (let value of tiles.getTilesByType(img`myTile3`)) {
     mySprite3 = sprites.create(img`
         . . b b b b . . 
         . b 5 5 5 5 b . 
@@ -671,7 +671,7 @@ for (let value of tiles.getTilesByType(assets.tile`myTile3`)) {
     )
     tiles.placeOnTile(mySprite3, value)
 }
-for (let value2 of tiles.getTilesByType(assets.tile`myTile1`)) {
+for (let value2 of tiles.getTilesByType(img`myTile1`)) {
     mySprite2 = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
